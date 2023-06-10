@@ -13,10 +13,6 @@ H = 1  # 피드백 루프의 전달함수 (1이면 피드백이 없는 상태)
 T = control.series(G, H)
 T = control.minreal(T)  # 최소 실수화
 
-# 출력 값 출력
-st.write('전달함수:')
-st.latex(r"\frac{100}{{s^2 + 5s + 6}}")
-
 # 시간 벡터 생성
 t = np.linspace(0, 10, 1000)
 
@@ -52,9 +48,6 @@ ax3.set_title('Bode Plot - Phase')
 ax3.grid(True)
 
 # 그래프를 Streamlit 앱에 출력
-st.write('전달함수:')
-st.latex(r"\frac{100}{{s^2 + 5s + 6}}")
-
 st.write('Step Response:')
 st.pyplot(fig1)
 
