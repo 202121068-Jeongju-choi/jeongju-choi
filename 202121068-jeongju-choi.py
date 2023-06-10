@@ -1,4 +1,5 @@
 
+import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 import control
@@ -13,8 +14,6 @@ H = 1  # 피드백 루프의 전달함수 (1이면 피드백이 없는 상태)
 T = control.series(G, H)
 T = control.minreal(T)  # 최소 실수화
 
-print(T)
-
 # 시간 벡터 생성
 t = np.linspace(0, 10, 1000)
 
@@ -25,29 +24,30 @@ u = np.ones_like(t)
 t, y = control.step_response(T, T=t, input=u)
 
 # 응답곡선 그리기
-plt.plot(t, y)
-plt.xlabel('Time')
-plt.ylabel('Output')
-plt.title('Step Response')
-plt.grid(True)
-plt.show()
+fig1, ax1 = plt.subplots()
+ax1.plot(t, y)
+ax1.set_xlabel('Time')
+ax1.set_ylabel('Output')
+ax1.set_title('Step Response')
+ax1.grid(True)
 
 # 주파수 응답 계산
 omega, mag, phase = control.bode(T)
 
 # 보드선도 그리기
-plt.figure()
-plt.semilogx(omega, mag)  # 주파수 응답의 크기
-plt.xlabel('Frequency')
-plt.ylabel('Magnitude (dB)')
-plt.title('Bode Plot - Magnitude')
-plt.grid(True)
+fig2, (ax2, ax3) = plt.subplots(2, 1)
+ax2.semilogx(omega, mag)  # 주파수 응답의 크기
+ax2.set_xlabel('Frequency')
+ax2.set_ylabel('Magnitude (dB)')
+ax2.set_title('Bode Plot - Magnitude')
+ax2.grid(True)
 
-plt.figure()
-plt.semilogx(omega, phase)  # 주파수 응답의 위상
-plt.xlabel('Frequency')
-plt.ylabel('Phase (degrees)')
-plt.title('Bode Plot - Phase')
-plt.grid(True)
+ax3.semilogx(omega, phase)  # 주파수 응답의 위상
+ax3.set_xlabel('Frequency')
+ax3.set_ylabel('Phase (degrees)')
+ax3.set_title('Bode Plot - Phase')
+ax3.grid(True)
 
-plt.show()
+# 그래프를 Streamlit 앱에 출력
+st.pyplot(fig1)
+st.pyplot(fig2)
