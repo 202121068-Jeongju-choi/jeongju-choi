@@ -24,7 +24,7 @@ t = np.linspace(0, 10, 1000)
 u = np.ones_like(t)
 
 # 시스템 응답 계산
-_, y, _ = control.forced_response(T, T=t, U=u)
+t, y, _ = control.step_response(T, T=t, input=u)
 
 # 응답곡선 그리기
 fig1, ax1 = plt.subplots()
