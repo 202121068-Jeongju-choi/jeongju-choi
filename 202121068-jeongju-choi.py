@@ -52,6 +52,9 @@ ax3.set_title('Bode Plot - Phase')
 ax3.grid(True)
 
 # 그래프를 Streamlit 앱에 출력
+st.write('전달함수:')
+st.latex(r"\frac{100}{{s^2 + 5s + 6}}")
+
 st.write('Step Response:')
 st.pyplot(fig1)
 
