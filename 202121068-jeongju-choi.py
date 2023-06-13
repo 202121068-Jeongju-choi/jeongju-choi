@@ -68,6 +68,8 @@ st.pyplot(fig1)
 st.write('Bode Plot:')
 st.pyplot(fig2)
 
+st.write('아래는 문제에서 요구하는 UNIT STEP의 응답곡선 입니다.')
+
 # 시스템 응답 계산
 t, y = control.step_response(T, T=t, input=u)
 
