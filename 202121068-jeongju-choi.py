@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import control
 
 def main():
-    st.write('202021082 이현수')
+    st.write('202121068 최정주')
 
 if __name__ == '__main__':
     main()
