@@ -8,6 +8,21 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
+# 시스템 응답 계산
+t, y = control.step_response(T, T=t, input=u)
+
+# 응답곡선 그리기
+fig1, ax1 = plt.subplots()
+ax1.plot(t, y)
+ax1.set_xlabel('Time')
+ax1.set_ylabel('Output')
+ax1.set_title('Step Response')
+ax1.grid(True)
+
+# 그래프를 Streamlit 앱에 출력
+st.write('Step Response:')
+st.pyplot(fig1)
 
 # 전달함수 G(s) 정의
 num = [100] # 분자 계수
@@ -64,17 +79,4 @@ st.pyplot(fig1)
 st.write('Bode Plot:')
 st.pyplot(fig2)
 
-# 시스템 응답 계산
-t, y = control.step_response(T, T=t, input=u)
 
-# 응답곡선 그리기
-fig1, ax1 = plt.subplots()
-ax1.plot(t, y)
-ax1.set_xlabel('Time')
-ax1.set_ylabel('Output')
-ax1.set_title('Step Response')
-ax1.grid(True)
-
-# 그래프를 Streamlit 앱에 출력
-st.write('Step Response:')
-st.pyplot(fig1)
