@@ -16,6 +16,8 @@ num = [100] # 분자 계수
 den = [1, 5, 6] # 분모 계수: s^2 + 5s + 6
 G = control.TransferFunction(num, den)
 
+st.write('G(s) / 1+G(s) 의 형태로 나타낼 수 있으며, 이는 정리한 식 모양입니다.')
+
 # 폐루프 전달함수 T(s) 계산
 H = 1  # 피드백 루프의 전달함수 (1이면 피드백이 없는 상태)
 T = control.series(G, H)
