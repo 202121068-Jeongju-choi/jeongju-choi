@@ -3,6 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import control
 
+def main():
+    st.write('202121068 최정주')
+
+if __name__ == '__main__':
+    main()
+
 # 전달함수 G(s) 정의
 num = [100] # 분자 계수
 den = [1, 5, 6] # 분모 계수: s^2 + 5s + 6
